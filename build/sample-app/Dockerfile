@@ -4,6 +4,7 @@ MAINTAINER Toshiki Tsuboi <t.tsubo2000@gmail.com>
 
 
 ENV GO_VERSION 1.21.3
+ENV LANG ja_JP.UTF-8
 ENV PATH=$PATH:/usr/local/go/bin
 
 # Install go
@@ -25,6 +26,8 @@ RUN apt-get update \
                        iputils-ping \
                        procps \
                        netbase \
+                       locales \
+ && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
