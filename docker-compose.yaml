@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+
+  mariadb:
+    image: mariadb:10.5.9
+    container_name: db-for-go
+    command:
+    - --character-set-server=utf8mb4
+    - --collation-server=utf8mb4_unicode_ci
+    - --sql-mode=ONLY_FULL_GROUP_BY,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    environment:
+    - MYSQL_ROOT_USER=${ROOTUSER}
+    - MYSQL_ROOT_PASSWORD=${ROOTPASS}
+    - MYSQL_DATABASE=${DATABASE}
+    - MYSQL_USER=${USERNAME}
+    - MYSQL_PASSWORD=${USERPASS}
+    - TZ='Asia/Tokyo'
+
+  sample-app:
+    build: build/sample-app/.
+    image: sample-app:latest
+    command: /bin/sh -c "tail -f /dev/null"
+    container_name: sample-app
+    hostname: sample-app
+    ports:
+    - "8080:8080"
+    environment:
+    - PATH=$PATH:/usr/local/go/bin
+    - DB_USER=${USERNAME}
+    - DB_PASSWORD=${USERPASS}
+    - DB_NAME=${DATABASE}
