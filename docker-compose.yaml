@@ -25,7 +25,7 @@ services:
     ports:
     - "8080:8080"
     environment:
-    - PATH=$PATH:/usr/local/go/bin
+    - PATH=$PATH:/go/bin
     - DB_USER=${USERNAME}
     - DB_PASSWORD=${USERPASS}
     - DB_NAME=${DATABASE}

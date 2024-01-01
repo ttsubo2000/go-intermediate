@@ -5,12 +5,11 @@ MAINTAINER Toshiki Tsuboi <t.tsubo2000@gmail.com>
 
 ENV GO_VERSION 1.21.3
 ENV LANG ja_JP.UTF-8
-ENV PATH=$PATH:/usr/local/go/bin
+ENV PATH=$PATH:/go/bin
 
 # Install go
 ADD https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz /
 RUN tar xzvf go$GO_VERSION.linux-amd64.tar.gz
-RUN mv /go /usr/local/go
 
 # Install dependencies for go-get
 RUN apt-get update \
