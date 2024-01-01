@@ -100,13 +100,6 @@ func (s *MyAppService) PostNiceService(article models.Article) (models.Article, 
 		err = apperrors.UpdateDataFailed.Wrap(err, "fail to update nice count")
 		return models.Article{}, err
 	}
-
-	return models.Article{
-		ID:        article.ID,
-		Title:     article.Title,
-		Contents:  article.Contents,
-		UserName:  article.UserName,
-		NiceNum:   article.NiceNum + 1,
-		CreatedAt: article.CreatedAt,
-	}, nil
+	
+	return s.GetArticleService(article.ID)
 }

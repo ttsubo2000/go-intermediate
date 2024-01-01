@@ -27,6 +27,8 @@ RUN apt-get update \
                        procps \
                        netbase \
                        locales \
+                       mysql-client \
+                       jq \
  && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*

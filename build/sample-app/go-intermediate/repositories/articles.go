@@ -35,7 +35,7 @@ func InsertArticle(db *sql.DB, article models.Article) (models.Article, error) {
 // 投稿一覧をDBから取得する関数
 func SelectArticleList(db *sql.DB, page int) ([]models.Article, error) {
 	const sqlStr = `
-		select article_id, title, contents, username, nice
+		select article_id, title, contents, username, nice, created_at
 		from articles
 		limit ? offset ?;
 	`
@@ -49,7 +49,7 @@ func SelectArticleList(db *sql.DB, page int) ([]models.Article, error) {
 	articleArray := make([]models.Article, 0)
 	for rows.Next() {
 		var article models.Article
-		rows.Scan(&article.ID, &article.Title, &article.Contents, &article.UserName, &article.NiceNum)
+		rows.Scan(&article.ID, &article.Title, &article.Contents, &article.UserName, &article.NiceNum, &article.CreatedAt)
 
 		articleArray = append(articleArray, article)
 	}

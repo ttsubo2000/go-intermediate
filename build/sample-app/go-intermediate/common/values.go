@@ -22,15 +22,6 @@ func GetTraceID(ctx context.Context) int {
 
 type userNameKey struct{}
 
-func GetUserName(ctx context.Context) string {
-	id := ctx.Value(userNameKey{})
-
-	if usernameStr, ok := id.(string); ok {
-		return usernameStr
-	}
-	return ""
-}
-
 func SetUserName(req *http.Request, name string) *http.Request {
 	ctx := req.Context()
 

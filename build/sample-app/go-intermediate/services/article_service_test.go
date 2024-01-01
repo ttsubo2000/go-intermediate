@@ -17,7 +17,7 @@ func TestMain(m *testing.M) {
 	dbUser := "docker"
 	dbPassword := "docker"
 	dbDatabase := "sampledb"
-	dbConn := fmt.Sprintf("%s:%s@tcp(127.0.0.1:3306)/%s?parseTime=true", dbUser, dbPassword, dbDatabase)
+	dbConn := fmt.Sprintf("%s:%s@tcp(db-for-go:3306)/%s?parseTime=true", dbUser, dbPassword, dbDatabase)
 
 	db, err := sql.Open("mysql", dbConn)
 	if err != nil {
