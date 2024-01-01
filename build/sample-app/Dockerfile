@@ -33,6 +33,6 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD go-intermediate /root/go-intermediate
-WORKDIR /root/go-intermediate
+RUN git clone https://github.com/ttsubo2000/go-intermediate.git /work
+WORKDIR /work
 RUN go mod tidy
