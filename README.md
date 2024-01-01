@@ -70,7 +70,7 @@
 
 ### (4) ブログ記事に「いいね」をつける
 
-	curl http://sample-app:8080/article/nice -X POST \
+	curl http://localhost:8080/article/nice -X POST \
 	-H "Content-Type: application/json" \
 	-d @- << EOF | jq .
 	{
@@ -80,7 +80,7 @@
 
 ### (5) 先ほど投稿したブログ記事に、コメントする
 
-	curl http://sample-app:8080/comment -X POST \
+	curl http://localhost:8080/comment -X POST \
 	-H "Content-Type: application/json" \
 	-d @- << EOF | jq .
 	{
