@@ -1,15 +1,9 @@
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
 MAINTAINER Toshiki Tsuboi <t.tsubo2000@gmail.com>
 
 
-ENV GO_VERSION 1.21.3
 ENV LANG ja_JP.UTF-8
-ENV PATH=$PATH:/go/bin
-
-# Install go
-ADD https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz /
-RUN tar xzvf go$GO_VERSION.linux-amd64.tar.gz
 
 # Install dependencies for go-get
 RUN apt-get update \
@@ -28,6 +22,8 @@ RUN apt-get update \
                        locales \
                        mysql-client \
                        jq \
+                       sudo \
+                       golang \
  && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
